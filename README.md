@@ -8,4 +8,4 @@ Simple teleport for Fivem!
 4) Configure to your liking
 
 ### Video
-[![esx_simpletp](https://i.imgur.com/LaD8XY6.png)](https://streamable.com/32owa)
+[![esx_simpletp](https://i.imgur.com/7rFddLo.png)](https://streamable.com/cd6x6)
