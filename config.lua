@@ -1,6 +1,7 @@
 Config = {}
 Config.Blackout = true
 Config.Animation = true
+Config.OnlyCars = true
 
 Config.Teleport = {
 
@@ -20,5 +21,5 @@ Config.Teleport = {
 		Activate = 1.0,
 		Text = '~g~[Departament]\n~s~Press [E] to exit',
 		Posout = {x = 290.72, y = -1094.86, z = 28.41}
-  }
+  	}
 }
