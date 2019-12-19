@@ -1,7 +1,7 @@
 Config = {}
 Config.Blackout = true
 Config.Animation = true
-Config.OnlyCars = true
+Config.OnlyCars = false
 
 Config.Teleport = {
 
