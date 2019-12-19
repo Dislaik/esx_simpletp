@@ -17,31 +17,45 @@ Citizen.CreateThread(function()
 			if GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.View then 
 				ESX.Game.Utils.DrawText3D(vector3(v.Pos.x, v.Pos.y, v.Pos.z), v.Text, 1.2, 4)
 				if GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Activate then
-					if not IsPedInAnyVehicle(player, false) then
-						if IsControlJustPressed(0, 38) then
-							if Config.Animation then
-								RequestAnimDict("anim@mp_atm@enter")
-								while not HasAnimDictLoaded("anim@mp_atm@enter") do
-									Citizen.Wait(1000)
+					if IsControlJustPressed(0, 38) then
+						if Config.OnlyCars then
+							if IsPedInAnyVehicle(player, false) then
+								if Config.Blackout then
+									DoScreenFadeOut(1000)
+									Citizen.Wait(1500)
 								end
-									
-								Citizen.Wait(200)
-								TaskPlayAnim(player,"anim@mp_atm@enter","enter",1.0, 1.0, 3000, 9, 1.0, 0, 0, 0)
-								Citizen.Wait(3000)
+								SetEntityHeading(player, v.Heading)
+								ESX.Game.Teleport(GetVehiclePedIsUsing(player), v.Posout)
+								if Config.Blackout then
+									DoScreenFadeIn(1500)
+								end
 							end
-							if Config.Blackout then
-								DoScreenFadeOut(1000)
-								Citizen.Wait(1500)
-							end
-							SetEntityHeading(player, v.Heading)
-							ESX.Game.Teleport(player, v.Posout) 
-							if Config.Blackout then
-								DoScreenFadeIn(1500)
+						else
+							if not IsPedInAnyVehicle(player, false) then
+								if Config.Animation then
+									RequestAnimDict("timetable@jimmy@doorknock@")
+									while not HasAnimDictLoaded("timetable@jimmy@doorknock@") do
+									Citizen.Wait(1000)
+									end
+										
+									Citizen.Wait(200)
+									TaskPlayAnim(player,"timetable@jimmy@doorknock@","knockdoor_idle",1.0, 1.0, 3000, 9, 1.0, 0, 0, 0)
+									Citizen.Wait(3000)
+								end
+								if Config.Blackout then
+									DoScreenFadeOut(1000)
+									Citizen.Wait(1500)
+								end
+								SetEntityHeading(player, v.Heading)
+								ESX.Game.Teleport(player, v.Posout) 
+								if Config.Blackout then
+									DoScreenFadeIn(1500)
+								end
 							end
 						end
 					end
 				end
 			end
 		end
-	end
+    	end
 end)
